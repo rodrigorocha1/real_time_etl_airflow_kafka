@@ -1,0 +1,53 @@
+services:
+  kafka:
+    image: apache/kafka:4.1.1
+    container_name: kafka
+    hostname: kafka
+    networks:
+      kafka_net:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+    environment:
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_NODE_ID: "1"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@172.20.0.10:9093"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.20.0.10:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: "1"
+      KAFKA_CLUSTER_ID: "kafka-cluster-local"
+      KAFKA_LOG_DIRS: "/var/lib/kafka/data"
+    volumes:
+      - ./kafka_data:/var/lib/kafka/data
+    restart: unless-stopped
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    hostname: kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"   # UI acessível no navegador
+    environment:
+      KAFKA_CLUSTERS_0_NAME: "local-cluster"
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "172.20.0.10:9092"
+      KAFKA_CLUSTERS_0_ZOOKEEPER: ""  # vazio, pois estamos em KRaft
+    networks:
+      kafka_net:
+        ipv4_address: 172.20.0.11
+    restart: unless-stopped
+
+networks:
+  kafka_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  kafka_data:

@@ -1,0 +1,5 @@
+config/
+cassandra_data/
+kafka_data/
+minio_data/
+.idea/
