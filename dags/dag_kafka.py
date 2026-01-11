@@ -77,7 +77,7 @@ with DAG(
 
     obter_posicoes = SPTransPosicaoOperator(
         task_id="obter_posicoes_sptrans",
-        token="dbe79ea5ae8f7d2cc7dadb670875a5a00c8b4579a5baabbdc6d53e6dd2dfb219"
+        token=""
     )
     obter_posicoes
 
