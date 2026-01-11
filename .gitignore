@@ -5,6 +5,7 @@ minio_data/
 .idea/
 __pycache__/
 *.pyc
+log/*
 logs/dag_id=dag_simples_exemplo/run_id=manual__2026-01-04T19:55:07.825970+00:00/task_id=tarefa_1/attempt=1.log
 logs/dag_id=dag_simples_exemplo/run_id=manual__2026-01-04T19:55:07.825970+00:00/task_id=tarefa_2/attempt=1.log
 logs/dag_id=dag_simples_exemplo/run_id=manual__2026-01-04T19:55:33.950780+00:00/task_id=tarefa_1/attempt=1.log
