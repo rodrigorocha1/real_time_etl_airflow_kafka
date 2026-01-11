@@ -1,0 +1,12 @@
+{
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "python.sortImports.args": [
+    "--settings-file",
+    "pyproject.toml"
+  ]
+}
