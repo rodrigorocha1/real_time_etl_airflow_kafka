@@ -160,3 +160,4 @@ logs/dag_id=dag_um_kafka_bronze/run_id=scheduled__2026-01-11T00:00:00+00:00/task
 logs/dag_id=dag_um_kafka_bronze/run_id=scheduled__2026-01-11T00:00:00+00:00/task_id=fazer_login/attempt=1.log
 logs/dag_processor/2026-01-11/dags-folder/dag_kafka.py.log
 logs/dag_processor/2026-01-11/dags-folder/exemplo_dag copy.py.log
+variaveis_conexoes/variables.json
