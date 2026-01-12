@@ -13,16 +13,10 @@ def produzir_mensagem(teste, **kwargs):
     agora = datetime.now()
     key = agora.strftime("%Y_%m_%d_%H_%M_%S")
     if teste:
+        agora = datetime.now()
+        key = agora.strftime("%Y_%m_%d_%H_%M_%S")
         return [(key, json.dumps(teste).encode('utf-8'))]
     print("Nenhum dado para enviar ao Kafka.")
-    value_dict = {
-        "onibus": "1234",
-        "linha": "4100",
-        "latitude": -23.55052,
-        "longitude": -46.633308
-    }
-    value_dict = json.dumps(value_dict).encode('utf-8')
-    return [(key, value_dict)]
 
 
 # -----------------------
